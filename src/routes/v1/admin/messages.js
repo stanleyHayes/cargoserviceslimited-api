@@ -11,7 +11,6 @@ const {
 const router = express.Router({mergeParams: true});
 
 router.route("/")
-    .post(authenticate, createMessage)
     .get(authenticate, getMessages);
 
 router.route('/:id')
