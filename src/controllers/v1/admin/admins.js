@@ -34,10 +34,7 @@ const getAdmins = async (req, res) => {
         if (status) {
             match['status'] = status;
         }
-        const admins = await Admin.find(match)
-            .skip(skip).limit(limit)
-            .sort({createdAt: -1});
-
+        const admins = await Admin.find(match).skip(skip).limit(limit).sort({createdAt: -1});
         const totalAdmins = await Admin.find(match).countDocuments();
         res.status(200).json({message: 'Admins retrieved successfully', data: admins, count: totalAdmins});
     } catch (e) {

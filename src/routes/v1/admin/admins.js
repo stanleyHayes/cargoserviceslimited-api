@@ -4,7 +4,10 @@ const {getAdmins, createAdmin, getAdmin} = require("./../../../controllers/v1/ad
 
 const router = express.Router({mergeParams: true});
 
-router.route('/').post(authenticate, createAdmin).get(authenticate, getAdmins);
+router.route('/')
+    .post(authenticate, createAdmin)
+    .get(authenticate, getAdmins);
+
 router.route('/:id').get(authenticate, getAdmin);
 
 module.exports = router;

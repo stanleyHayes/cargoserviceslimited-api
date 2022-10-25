@@ -14,6 +14,7 @@ const userMessageV1Routes = require("./routes/v1/user/messages");
 const adminAuthV1Routes = require("./routes/v1/admin/authentication");
 const adminShipmentV1Routes = require("./routes/v1/admin/shipments");
 const adminDashboardV1Routes = require("./routes/v1/admin/dashboard");
+const adminAdminsV1Routes = require("./routes/v1/admin/admins");
 const adminTrackingV1Routes = require("./routes/v1/admin/tracking");
 const adminMessageV1Routes = require("./routes/v1/admin/messages");
 const adminShipmentStageV1Routes = require("./routes/v1/admin/shipment-stage");
@@ -39,6 +40,7 @@ app.use('/api/v1/user/messages', userMessageV1Routes);
 
 
 app.use('/api/v1/admin/auth', adminAuthV1Routes);
+app.use('/api/v1/admin/admins', adminAdminsV1Routes);
 app.use('/api/v1/admin/dashboard', adminDashboardV1Routes);
 app.use('/api/v1/admin/shipments', adminShipmentV1Routes);
 app.use('/api/v1/admin/tracking', adminTrackingV1Routes);

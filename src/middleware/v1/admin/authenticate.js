@@ -11,13 +11,14 @@ exports.authenticate = async (req, res, next) => {
         if(bearer !== 'Bearer' || !token)
             return res.status(400).json({message: 'Invalid header format'});
         const decoded = jwt.verify(token, keys.jwtSecret, null, null);
-        const admin = await Admin.findOne({_id: decoded._id, "devices.token": token});
+        const admin = await Admin.findOne({_id: decoded._id});
         if(!admin)
             return res.status(401).json({message: `Session expired. Please login again!`});
         req.admin = admin;
         req.token = token;
         next();
     }catch (e) {
+        console.log(e.message);
         res.status(500).json({message: `Session expired. Please login again!`});
     }
 }

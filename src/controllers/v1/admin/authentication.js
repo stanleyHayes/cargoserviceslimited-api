@@ -45,7 +45,7 @@ exports.login = async (req, res) => {
         const token = jwt.sign(
             {_id: existingAdmin._id.toString()},
             keys.jwtSecret,
-            {expiresIn: '1h'},
+            {expiresIn: '24h'},
             null
         );
         await existingAdmin.save();
@@ -58,17 +58,12 @@ exports.login = async (req, res) => {
 exports.updateProfile = async (req, res) => {
     try {
         const updates = Object.keys(req.body);
-        const allowedUpdates = ['firstName', 'lastName', 'username', 'phone', 'address'];
+        const allowedUpdates = ['name', 'phone'];
         const isAllowed = updates.every(update => allowedUpdates.includes(update));
         if (!isAllowed)
             return res.status(400).json({message: 'Update not allowed'});
         for (let key of updates) {
-            if (key === 'username') {
-                const existingAdmin = await Admin.findOne({username: key});
-                if (existingAdmin)
-                    return res.status(409).json({message: 'Username already taken'});
-                else req.admin[key] = req.body[key];
-            } else if (key === 'phone') {
+            if (key === 'phone') {
                 const existingAdmin = await Admin.findOne({phone: key});
                 if (existingAdmin)
                     return res.status(409).json({message: 'Phone number already taken'});
@@ -107,7 +102,7 @@ exports.changePassword = async (req, res) => {
         const link = `https://cargoserviceslimitedadmin.vercel.app/auth/reset-password?token=${token}`;
         const message = `You have successfully changed your password. If you did not perform this operation, use the link ${link} to reset your password`;
         // await sendSMS(req.admin.phone, message);
-        const subject = `Gold Star Reset Password Confirmation`;
+        const subject = `Cargo Services Limited Reset Password Confirmation`;
         await sendEmail(req.admin.email, subject, message);
         res.status(200).json({message: 'Password changed successfully'});
     } catch (e) {
@@ -176,7 +171,7 @@ exports.resendOTP = async (req, res) => {
         const token = jwt.sign(
             {_id: existingAdmin._id.toString()},
             keys.jwtSecret,
-            {expiresIn: '1h'},
+            {expiresIn: '24h'},
             null
         );
         existingAdmin.authInfo = {
@@ -187,7 +182,7 @@ exports.resendOTP = async (req, res) => {
         await existingAdmin.save();
         const message = `Your OTP is ${otp}. OTP expires in 1 hour`;
         // await sendSMS(phone, message);
-        const subject = `Gold Star OTP`;
+        const subject = `Cargo Services Limited OTP`;
         await sendEmail(existingAdmin.email, subject, message);
 
         res.status(200).json({message: 'OTP sent successfully', token});
@@ -269,6 +264,7 @@ exports.getProfile = async (req, res) => {
             token: req.token
         });
     } catch (e) {
+        console.log(e.message);
         res.status(401).json({message: e.message});
     }
 }

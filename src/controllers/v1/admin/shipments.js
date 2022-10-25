@@ -31,7 +31,7 @@ exports.createShipments = async (req, res) => {
 exports.getShipment = async (req, res) => {
     try {
         const {id} = req.params;
-        const shipment = await Shipment.findOne({user: req.user._id, _id: id})
+        const shipment = await Shipment.findOne({admin: req.admin._id, _id: id})
             .populate({path: 'shippingPackage'});
         if (!shipment) return res.status(404).json({message: 'Shipment not found'});
         res.status(200).json({message: 'Shipment Retrieved', data: shipment});
@@ -46,7 +46,6 @@ exports.getShipments = async (req, res) => {
         const limit = parseInt(req.query.size) || 50;
         const skip = (page - 1) * limit;
         const match = {};
-        match['sender'] = req.user._id;
         if (req.query.status) {
             match['status'] = req.query.status;
         }
@@ -64,6 +63,7 @@ exports.getShipments = async (req, res) => {
             data: shipments
         });
     } catch (e) {
+        console.log(e.message);
         res.status(500).json({message: e.message});
     }
 }
