@@ -4,14 +4,12 @@ const {
     updateMessage,
     getMessages,
     getMessage,
-    deleteMessage,
-    createMessage
+    deleteMessage
 } = require("./../../../controllers/v1/admin/messages");
 
 const router = express.Router({mergeParams: true});
 
-router.route("/")
-    .get(authenticate, getMessages);
+router.route("/").get(authenticate, getMessages);
 
 router.route('/:id')
     .get(authenticate, getMessage)

@@ -4,11 +4,7 @@ const validator = require("validator");
 const Schema = mongoose.Schema;
 
 const messageSchema = new Schema({
-    firstName: {
-        type: String,
-        required: true
-    },
-    lastName: {
+    name: {
         type: String,
         required: true
     },
@@ -37,11 +33,6 @@ const messageSchema = new Schema({
     text: {
         type: String,
         required: true
-    },
-    status: {
-        type: String,
-        enum: ['responded', 'pending', 'read'],
-        default: 'pending'
     }
 }, {timestamps: {createdAt: true, updatedAt: true}});
 

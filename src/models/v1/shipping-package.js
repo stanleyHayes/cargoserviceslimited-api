@@ -44,45 +44,44 @@ const shippingPackage = new mongoose.Schema({
             default: 'g'
         }
     },
-    dimensions: {
-        width: {
-            amount: {
-                type: Number,
-                min: 0,
-                required: true
-            },
-            unit: {
-                type: String,
-                required: true,
-                enum: ['m', 'cm', 'mm', 'km', 'in'],
-                default: 'cm'
-            }
+
+    width: {
+        amount: {
+            type: Number,
+            min: 0,
+            required: true
         },
-        length: {
-            amount: {
-                type: Number,
-                min: 0,
-                required: true
-            },
-            unit: {
-                type: String,
-                required: true,
-                enum: ['m', 'cm', 'mm', 'km', 'in'],
-                default: 'cm'
-            }
+        unit: {
+            type: String,
+            required: true,
+            enum: ['m', 'cm', 'mm', 'km', 'in'],
+            default: 'cm'
+        }
+    },
+    length: {
+        amount: {
+            type: Number,
+            min: 0,
+            required: true
         },
-        height: {
-            amount: {
-                type: Number,
-                min: 0,
-                required: true
-            },
-            unit: {
-                type: String,
-                required: true,
-                enum: ['m', 'cm', 'mm', 'km', 'in'],
-                default: 'cm'
-            }
+        unit: {
+            type: String,
+            required: true,
+            enum: ['m', 'cm', 'mm', 'km', 'in'],
+            default: 'cm'
+        }
+    },
+    height: {
+        amount: {
+            type: Number,
+            min: 0,
+            required: true
+        },
+        unit: {
+            type: String,
+            required: true,
+            enum: ['m', 'cm', 'mm', 'km', 'in'],
+            default: 'cm'
         }
     }
 }, {

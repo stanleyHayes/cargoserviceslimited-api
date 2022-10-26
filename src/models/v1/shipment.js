@@ -62,10 +62,6 @@ const shippingSchema = new mongoose.Schema({
             type: String,
             required: true,
             trim: true
-        },
-        addressLine2: {
-            type: String,
-            trim: true
         }
     },
     destination: {
