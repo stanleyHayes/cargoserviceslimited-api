@@ -24,6 +24,7 @@ exports.createShipments = async (req, res) => {
         });
         res.status(201).json({message: 'Shipments Added', data: shipment});
     } catch (e) {
+        console.log(e.message)
         res.status(500).json({message: e.message});
     }
 }

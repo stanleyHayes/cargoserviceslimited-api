@@ -19,7 +19,6 @@ const shippingSchema = new mongoose.Schema({
         email: {
             type: String,
             lowercase: true,
-            unique: true,
             required: true,
             validate(value) {
                 if (!validator.isEmail(value)) {
