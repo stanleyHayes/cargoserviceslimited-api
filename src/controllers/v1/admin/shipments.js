@@ -20,7 +20,7 @@ exports.createShipments = async (req, res) => {
             origin,
             packages,
             destination,
-            stages: [{order: 1, name: 'Shipment Created', date: Date.now(), location: 'Cargo Services Limited Warehouse'}]
+            stages: [{order: 1, name: 'Shipment Created', date: Date.now(), location: 'Cargo Services Limited, USA'}]
         });
         res.status(201).json({message: 'Shipments Added', data: shipment});
     } catch (e) {
