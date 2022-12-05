@@ -136,7 +136,9 @@ const shippingSchema = new mongoose.Schema({
             },
             date: {
                 type: Date,
-                default: Date.now()
+                default: Date.now(
+
+                )
             },
             location: {
                 type: String,

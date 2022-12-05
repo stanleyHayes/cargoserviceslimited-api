@@ -28,7 +28,11 @@ mongoose.connect(keys.mongoDBURI).then(value => {
 
 const app = express();
 
-app.use(cors());
+app.use(cors({
+    'Access-Control-Allow-Origin': '*',
+    'Access-Control-Allow-Methods': 'POST, GET, PUT, DELETE',
+    'Access-Control-Allow-Headers': '*'
+}));
 app.use(helmet())
 app.use(express.json());
 app.use(expressUserAgent.express());
