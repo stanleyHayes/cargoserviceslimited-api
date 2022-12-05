@@ -30,7 +30,7 @@ const app = express();
 
 app.use(cors({
     'Access-Control-Allow-Origin': '*',
-    'Access-Control-Allow-Methods': 'POST, GET, PUT, DELETE',
+    'Access-Control-Allow-Methods': '*',
     'Access-Control-Allow-Headers': '*',
     origin:'*',
     credentials:true,            //access-control-allow-credentials:true
