@@ -29,7 +29,7 @@ mongoose.connect(keys.mongoDBURI).then(value => {
 const app = express();
 
 app.use(cors({
-    'Access-Control-Allow-Origin': '*',
+    'Access-Control-Allow-Origin': 'https://cargoserviceslimitedadmin.vercel.app/, https://cargoserviceslimited.vercel.app/',
     'Access-Control-Allow-Methods': 'GET, POST, OPTIONS, PUT, PATCH, DELETE',
     'Access-Control-Allow-Headers': 'X-Requested-With,content-type',
     'Access-Control-Allow-Credentials': true
