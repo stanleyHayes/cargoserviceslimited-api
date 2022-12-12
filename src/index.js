@@ -28,7 +28,9 @@ mongoose.connect(keys.mongoDBURI).then(value => {
 
 const app = express();
 
-app.use(cors());
+app.use(cors({
+    origin: "*"
+}));
 app.use(helmet())
 app.use(express.json());
 app.use(expressUserAgent.express());
