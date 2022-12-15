@@ -159,8 +159,8 @@ const shippingSchema = new mongoose.Schema({
         },
         currency: {
             type: String,
-            enum: ['USD', 'EUR'],
-            default: 'EUR'
+            enum: ['USD', 'EUR', 'GBP'],
+            default: 'USD'
         }
     },
     packages: {

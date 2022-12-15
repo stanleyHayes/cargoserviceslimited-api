@@ -68,3 +68,17 @@ exports.getShipments = async (req, res) => {
         res.status(500).json({message: e.message});
     }
 }
+
+
+exports.deleteShipment = async (req, res) => {
+    try {
+        const {id} = req.params;
+        const shipment = await Shipment.findById(id);
+        if (!shipment) return res.status(404).json({message: 'Shipment not found'});
+        await shipment.remove()
+        res.status(200).json({message: 'Shipment Removed', data: shipment});
+    } catch (e) {
+        console.log(e.message)
+        res.status(500).json({message: e.message});
+    }
+}
