@@ -62,3 +62,5 @@ const port = process.env.PORT || keys.port;
 app.listen(port, () => {
     console.log(`Server connected in ${keys.nodeENV} mode on port ${port}`);
 });
+
+module.exports = app;
