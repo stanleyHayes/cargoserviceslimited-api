@@ -28,7 +28,16 @@ mongoose.connect(keys.mongoDBURI).then(value => {
 
 const app = express();
 
-app.use(cors());
+
+app.use(cors({
+    origin: "http://localhost:3000, http://localhost:3001, https://cargoserviceslimited.vercel.app, https://cargoserviceslimited.com",
+    methods: ['PUT', 'GET', 'POST', 'DELETE', 'OPTIONS', 'PATCH'],
+    allowedHeaders: ['Content-Type', 'Authorization'],
+    optionsSuccessStatus: 204,
+    preflightContinue: false,
+    maxAge: 50,
+    credentials: true,
+}));
 app.use(helmet())
 app.use(express.json());
 app.use(expressUserAgent.express());
