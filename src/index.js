@@ -30,7 +30,7 @@ const app = express();
 
 
 app.use(cors({
-    origin: "http://localhost:3000, http://localhost:3001, https://cargoserviceslimited.vercel.app, https://cargoserviceslimited.com",
+    origin: "*",
     methods: ['PUT', 'GET', 'POST', 'DELETE', 'OPTIONS', 'PATCH'],
     allowedHeaders: ['Content-Type', 'Authorization'],
     optionsSuccessStatus: 204,
