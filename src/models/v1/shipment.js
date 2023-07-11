@@ -29,11 +29,6 @@ const shippingSchema = new mongoose.Schema({
         phone: {
             type: String,
             required: true,
-            validate(value) {
-                if (!validator.isMobilePhone(value)) {
-                    throw new Error('Invalid phone number');
-                }
-            }
         },
     },
     origin: {
@@ -100,11 +95,6 @@ const shippingSchema = new mongoose.Schema({
             type: String,
             required: true,
             trim: true,
-            validate(value) {
-                if (!validator.isMobilePhone(value)) {
-                    throw new Error(`Invalid phone ${value}`);
-                }
-            }
         },
         email: {
             type: String,
